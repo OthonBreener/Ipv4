@@ -5,6 +5,15 @@ import numpy as np
 #subrede = str(input("Digite quantos bits possuem a subrede: "))
 
 def conversion_binario_for_decimal(binario):
+    """
+    Função que converte o ip de rede de decimal para binário.
+    INPUT:
+        Ip de rede em decimal
+        Exemplo: '10.20.12.45'
+    OUTPUT:
+        Ip de rede em binário
+        Exemplo: '00001010.00010100.00001100.00101101'
+    """
 
     if not binario:
         return ("Sem dados para conversão de binário para decimal.")
@@ -34,6 +43,16 @@ def conversion_binario_for_decimal(binario):
 
 
 def splited_lista(total_bits, func):
+    """
+    Função que recebe o total de bits de um ip e o ip de rede em formado de string.
+    Separa o ip de rede em quatro listas com cada uma contendo 8 caracteres.
+    INPUT:
+        Total de bits, Ip.
+        Exemplo: 32, '00001010000101000000110000101101'
+    OUTPUT:
+        Ip de rede em lista de quatro elementos
+        Exemplo: ['00001010', '00010100', '00001100', '00101101']
+    """
 
     n = 4
     vetor_subrede_splited = []
@@ -50,6 +69,17 @@ def splited_lista(total_bits, func):
 
 
 def calculo_de_sub_rede(binario, subrede):
+    """
+    Função que realiza o cálculo de subrede de um ip. Recebe o ip da rede e a
+    mascara de subrede, com isso calcula quais são os hosts disponiveis no ip
+    e retorna a mascara de subrede em binários e decimal.
+    INPUT:
+        IP da rede em binário e Mascara de Subrede
+        Exemplo: '00001010.00010100.00001100.00101101', 26
+    OUTPUT:
+        Subrede em binário e decimal
+        Exemplo: '11111111.11111111.11111111.11000000', '255.255.255.192'
+    """
 
     lista_binarios = binario.split('.')
     number_bits = len(lista_binarios[0]) * 4
@@ -86,6 +116,17 @@ def calculo_de_sub_rede(binario, subrede):
 
 
 def primary_and_broadcast_ip(ip_rede_binario, ip_subrede_binario, subrede):
+    """
+    Função que calcula o número de ip da rede (ou ip primário) e o número de ip de broadcast
+    (ou último ip).
+    INPUT:
+        Ip de rede binário, Ip de Subrede binário, Mascara de Subrede
+        Exemplo: '00001010.00010100.00001100.00101101', '11111111.11111111.11111111.11000000', 26
+
+    OUTPUT:
+        Ip de rede e Ip de broadcast
+        Exemplo: '00001010.00010100.00001100.00000000', '00001010.00010100.00001100.00111111'
+    """
 
     number_bits = len(ip_rede_binario.split('.')[0]) * 4
     number_bits_disponiveis = number_bits - subrede
@@ -126,5 +167,5 @@ ip_rede_binario = '00001010.00010100.00001100.00101101'
 
 
 
-conversion = calculo_de_sub_rede(ip_rede_binario, subrede)
+conversion = primary_and_broadcast_ip(ip_rede_binario, ip_subrede_binario, subrede)
 print(conversion)
