@@ -4,7 +4,7 @@ import numpy as np
 #decimal = str(input("Entre com o ip da sua rede em decimal: "))
 #subrede = str(input("Digite quantos bits possuem a subrede: "))
 
-def conversion_binario_for_decimal(binario):
+def conversion_decimal_for_binario(decimal):
     """
     Função que converte o ip de rede de decimal para binário.
     INPUT:
@@ -13,6 +13,48 @@ def conversion_binario_for_decimal(binario):
     OUTPUT:
         Ip de rede em binário
         Exemplo: '00001010.00010100.00001100.00101101'
+    """
+
+    if not decimal:
+        return ("Sem dados para conversão de decimal para binário.")
+
+    number_binario = []
+    bi = decimal.split('.')
+
+    for i in range(len(bi)):
+
+        foo = []
+        bar = True
+        number = int(bi[i])
+
+        while bar:
+
+            foo.append(str(number % 2))
+            number = int(number / 2)
+
+            if number < 2:
+                foo.append(str(1))
+                bar = False
+
+        while len(foo) < 8:
+
+            foo.append(str(0))
+
+        foobar = list(reversed(foo))
+        number_binario.append(''.join(foobar))
+
+    return ('.'.join(number_binario))
+
+
+def conversion_binario_for_decimal(binario):
+    """
+    Função que converte o ip de rede de binario para decimal.
+    INPUT:
+        Ip de rede em binario
+        Exemplo: '00001010.00010100.00001100.00101101'
+    OUTPUT:
+        Ip de rede em decimal
+        Exemplo: '10.20.12.45'
     """
 
     if not binario:
@@ -163,9 +205,6 @@ def primary_and_broadcast_ip(ip_rede_binario, ip_subrede_binario, subrede):
 ip_subrede_binario = '11111111.11111111.11111111.11000000'
 subrede = 26
 ip_rede_binario = '00001010.00010100.00001100.00101101'
-
-
-
 
 conversion = primary_and_broadcast_ip(ip_rede_binario, ip_subrede_binario, subrede)
 print(conversion)
