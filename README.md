@@ -3,7 +3,7 @@
 Este projeto contém funções que convertem um ip de decimal para binário, binário para decimal, calcula
 o ip primário e o ip de broadcast e a mascara de subrede. Para fins de aprendizado está sendo implementado testes unitários utilizando o ward e unittest.
 
-** Importante: ** Este resumo de testes foi retirado da live de python do Dunossauro, link: (https://www.youtube.com/watch?v=MjQCvJmc31A&t=3955s&ab_channel=EduardoMendes)
+**Importante:** Este resumo de testes foi retirado da live de python do Dunossauro, link: (https://www.youtube.com/watch?v=MjQCvJmc31A&t=3955s&ab_channel=EduardoMendes)
 
 ## Testes com o Pytest
 

@@ -27,17 +27,23 @@ def conversion_decimal_for_binario(decimal):
         bar = True
         number = int(bi[i])
 
-        while bar:
+        if number == 1:
+            foo.append(str(1))
 
-            foo.append(str(number % 2))
-            number = int(number / 2)
+        elif number == 0:
+            foo.append(str(0))
 
-            if number < 2:
-                foo.append(str(1))
-                bar = False
+        else:
+            while bar:
+
+                foo.append(str(number % 2))
+                number = int(number / 2)
+
+                if number < 2:
+                    foo.append(str(1))
+                    bar = False
 
         while len(foo) < 8:
-
             foo.append(str(0))
 
         foobar = list(reversed(foo))
@@ -206,5 +212,8 @@ ip_subrede_binario = '11111111.11111111.11111111.11000000'
 subrede = 26
 ip_rede_binario = '00001010.00010100.00001100.00101101'
 
-conversion = primary_and_broadcast_ip(ip_rede_binario, ip_subrede_binario, subrede)
+ip = '177.69.128.1'
+ip2 = '0'
+
+conversion = conversion_decimal_for_binario(ip2)
 print(conversion)
