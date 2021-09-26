@@ -1,64 +1,56 @@
 # Projeto de calculo de rede Ipv4 para fins de aprendizado
 
 Este projeto contém funções que convertem um ip de decimal para binário, binário para decimal, calcula
-o ip primário e o ip de broadcast e a mascara de subrede. Para fins de aprendizado está sendo implementado
-testes unitários utilizando o ward e unittest.
+o ip primário e o ip de broadcast e a mascara de subrede. Para fins de aprendizado está sendo implementado testes unitários utilizando o ward e unittest.
 
+** Importante: ** Este resumo de testes foi retirado da live de python do Dunossauro, link: (https://www.youtube.com/watch?v=MjQCvJmc31A&t=3955s&ab_channel=EduardoMendes)
 
 ## Testes com o Pytest
 
 Antes de iniciar os testes lembre de comentar as variáveis de ambiente para não
 mandar nenhum teste para o banco de dados.
 
+### Resumo significado do retorno dos testes:
+
+* . : Passou
+* F : Falhou
+* x : Falha esperada
+* X : Falha esperada, mas não falhou
+* s : Pulou (skiped)
+
 ### Comandos para rodar os Testes
 
 * comando para rodar os testes e mostrar o nome dos testes:
 
-      ```
       pytest -v nome_do_arquivo.py
-      ```
 
 * comando para executar os testes e mostrar as saidas do console:
 
-      ```
       pytest -s nome_do_arquivo.py
-      ```
 
 * comando para rodar um teste marcado com @mark.task :
 
-      ```
       pytest -m task
-      ```
 
 * comando que mostra o motivo de um teste marcado com skip ter sido pulado:
 
-      ```
       pytest -rs nome_do_arquivo.py
-      ```
 
 * comando para rodar com o ipd:
 
-      ```
       pytest -m task -s
-      ```
 
 * comando para executar todos os testes deste arquivo:
 
-      ```
       pytest tests/test_tasks.py
-      ```
 
 * comando para executar todos os testes da pasta tests:
 
-      ```
       pytest
-      ```
 
 * comando para rodar os testes e parar com o pdb assim que dê o primeiro erro:
 
-      ```
       pytest --pdb
-      ```
 
 ### Tags embutidas do mark
 
@@ -93,22 +85,53 @@ parâmetros. A tupla recebe o params e o resultado esperado. Exemplo:
         def test_soma_mais_2(params, mensagem_esperada):
           assert soma_mais_2(params) == mensagem_esperada
 
+## Fixtures no Pytest
 
-### Resumo significado do retorno dos testes:
+A fixture é basicamente uma maneira de 'entrar' em um contexto. Ou prover uma ferramenta que precisa
+ser executada 'antes' dos testes. Os testes são montados por 4 fases:
 
-    * . : Passou
-    * F : Falhou
-    * x : Falha esperada
-    * X : Falha esperada, mas não falhou
-    * s : Pulou (skiped)
+1. Setup: Onde montamos as coisas
+2. Exercise: Onde chamamos as coisas
+3. Assert: Onde verificamos as coisas
+4. TearDown: Onde desmontamos as coisas
+
+O pytest oferece fixtures prontas, algumas delas são:
+
+1. capsys e variações: 'espiona' o stdout
+
+      def test_output(capsys):
+          print('meu print')
+          captured = capsys.readouterr()
+          assert captured.out == 'meu print\n'
+
+2. tempdir: Cria um diretório temporário
+3. caplog: 'espiona' logs
+4. mokeypatch: Adiciona atributos e métodos a objetos em runtime
+
+Para saber mais sobre as fixtures do pytest, basta rodar:
+
+    pytest --fixtures
+
+Exemplo de como criar a sua própria fixture:
+
+    from pytest import fixture
+    from app import create_app
+
+    @fixture
+    def flask_app():
+        return create_app()
+
+    def teste_com_app(flask_app):
+        pass
 
 ### Bibliotecas instaladas:
-    * pytest
-    * pytest-cov
-    * pytest-mock
+
+* pytest
+* pytest-cov
+* pytest-mock
 
 ### Para exibir o html no firefox, rode:
 
-    1. pytest --cov=.
-    2. coverage html
-    3. firefox htmlcov/index.html
+1. pytest --cov=.
+2. coverage html
+3. firefox htmlcov/index.html
