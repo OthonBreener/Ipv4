@@ -41,6 +41,13 @@ mandar nenhum teste para o banco de dados.
       pytest --pdb
         ```
 
+## Tags embutidas do mark
+
+  * mark.skip: Para pular um teste
+  * mark.skipif: Para pular um teste em um determinado contexto
+  * mark.xfail: É esperado que esse teste falhe em algum contexto
+  * mark.usefixture: ..
+  * mark.parametrize: Para parametrizar testes
 
 
 ## Resumo significado do retorno dos testes:
@@ -50,10 +57,6 @@ mandar nenhum teste para o banco de dados.
     * x : Falha esperada
     * X : Falha esperada, mas não falhou
     * s : Pulou (skiped)
-
-
-
-
 
 ## bibliotecas instaladas:
     * pytest
