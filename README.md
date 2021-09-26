@@ -12,34 +12,34 @@ mandar nenhum teste para o banco de dados.
 
 ## Comandos para rodar os Testes
 
-    * comando para rodar os testes e mostrar o nome dos testes:
-          ```
-          pytest -v nome_do_arquivo.py
-          ```
-    * comando para executar os testes e mostrar as saidas do console:
-          ```
-          pytest -s nome_do_arquivo.py
-          ```
-    * comando para rodar um teste marcado com @mark.task :
-          ```
-          pytest -m task
-          ```
-    * comando para rodar com o ipd:
-          ```
-          pytest -m task -s
-          ```
-    * comando para executar todos os testes deste arquivo:
-          ```
-          pytest tests/test_tasks.py
-          ```
-    * comando para executar todos os testes da pasta tests:
-          ```
-          pytest
-          ```
-    * comando para rodar os testes e parar com o pdb assim que dê o primeiro erro:
-          ```
-          pytest --pdb
-          ```
+* comando para rodar os testes e mostrar o nome dos testes:
+      ```
+      pytest -v nome_do_arquivo.py
+      ```
+* comando para executar os testes e mostrar as saidas do console:
+      ```
+      pytest -s nome_do_arquivo.py
+      ```
+* comando para rodar um teste marcado com @mark.task :
+      ```
+      pytest -m task
+      ```
+* comando para rodar com o ipd:
+      ```
+      pytest -m task -s
+      ```
+* comando para executar todos os testes deste arquivo:
+      ```
+      pytest tests/test_tasks.py
+      ```
+* comando para executar todos os testes da pasta tests:
+      ```
+      pytest
+      ```
+* comando para rodar os testes e parar com o pdb assim que dê o primeiro erro:
+      ```
+      pytest --pdb
+        ```
 
 
 
