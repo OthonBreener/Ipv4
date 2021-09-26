@@ -1,5 +1,6 @@
 unittest
 pytest
+chardet
 ipython
 ward
 urllib3
