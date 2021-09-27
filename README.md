@@ -85,7 +85,7 @@ parâmetros. A tupla recebe o params e o resultado esperado. Exemplo:
         def test_soma_mais_2(params, mensagem_esperada):
           assert soma_mais_2(params) == mensagem_esperada
 
-## Fixtures no Pytest
+### Fixtures no Pytest
 
 A fixture é basicamente uma maneira de 'entrar' em um contexto. Ou prover uma ferramenta que precisa
 ser executada 'antes' dos testes. Os testes são montados por 4 fases:
