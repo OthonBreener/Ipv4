@@ -21,36 +21,44 @@ mandar nenhum teste para o banco de dados.
 ### Comandos para rodar os Testes
 
 * comando para rodar os testes e mostrar o nome dos testes:
-
-      pytest -v nome_do_arquivo.py
+```sh
+pytest -v nome_do_arquivo.py
+```
 
 * comando para executar os testes e mostrar as saidas do console:
-
-      pytest -s nome_do_arquivo.py
+```sh
+pytest -s nome_do_arquivo.py
+```
 
 * comando para rodar um teste marcado com @mark.task :
-
-      pytest -m task
+```sh
+pytest -m task
+```
 
 * comando que mostra o motivo de um teste marcado com skip ter sido pulado:
-
-      pytest -rs nome_do_arquivo.py
+```sh
+pytest -rs nome_do_arquivo.py
+```
 
 * comando para rodar com o ipd:
-
-      pytest -m task -s
+```sh
+pytest -m task -s
+```
 
 * comando para executar todos os testes deste arquivo:
-
-      pytest tests/test_tasks.py
+```sh
+pytest tests/test_tasks.py
+```
 
 * comando para executar todos os testes da pasta tests:
-
-      pytest
+```sh
+pytest
+```
 
 * comando para rodar os testes e parar com o pdb assim que dê o primeiro erro:
-
-      pytest --pdb
+```sh
+pytest --pdb
+```
 
 ### Tags embutidas do mark
 
@@ -98,31 +106,34 @@ ser executada 'antes' dos testes. Os testes são montados por 4 fases:
 O pytest oferece fixtures prontas, algumas delas são:
 
 1. capsys e variações: 'espiona' o stdout
-
-      def test_output(capsys):
-          print('meu print')
-          captured = capsys.readouterr()
-          assert captured.out == 'meu print\n'
+```python
+def test_output(capsys):
+    print('meu print')
+    captured = capsys.readouterr()
+    assert captured.out == 'meu print\n'
+```
 
 2. tempdir: Cria um diretório temporário
 3. caplog: 'espiona' logs
 4. mokeypatch: Adiciona atributos e métodos a objetos em runtime
 
 Para saber mais sobre as fixtures do pytest, basta rodar:
-
-    pytest --fixtures
+```sh
+pytest --fixtures
+```
 
 Exemplo de como criar a sua própria fixture:
+```python
+from pytest import fixture
+from app import create_app
 
-    from pytest import fixture
-    from app import create_app
+@fixture
+def flask_app():
+    return create_app()
 
-    @fixture
-    def flask_app():
-        return create_app()
-
-    def teste_com_app(flask_app):
-        pass
+def teste_com_app(flask_app):
+    pass
+```
 
 ### Bibliotecas instaladas:
 
