@@ -75,10 +75,7 @@ class TestFunctionConversionBinaroForDecimal:
     @mark.task
     def test_se_o_ip_for_composto_por_dois_numeros_um_one_e_um_zero_deve_retornar_resultado_esperado(self):
 
-        # erro nesse teste
-
         params = '10'
-        resultado_esperado = ''
+        resultado_esperado = '2'
 
-        import ipdb;ipdb.set_trace()
-        conversion_binario_for_decimal(params)
+        assert conversion_binario_for_decimal(params) == resultado_esperado

@@ -147,13 +147,6 @@ def teste_com_app(flask_app):
 ```
 
 
-
-
-
-
-
-
-
 ### Bibliotecas instaladas:
 
 * pytest
