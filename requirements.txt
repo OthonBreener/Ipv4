@@ -1,6 +1,7 @@
-unittest
 pytest
+pytest-cov
 chardet
 ipython
 ward
 urllib3
+numpy

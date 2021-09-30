@@ -21,36 +21,44 @@ mandar nenhum teste para o banco de dados.
 ### Comandos para rodar os Testes
 
 * comando para rodar os testes e mostrar o nome dos testes:
-
-      pytest -v nome_do_arquivo.py
+```sh
+pytest -v nome_do_arquivo.py
+```
 
 * comando para executar os testes e mostrar as saidas do console:
-
-      pytest -s nome_do_arquivo.py
+```sh
+pytest -s nome_do_arquivo.py
+```
 
 * comando para rodar um teste marcado com @mark.task :
-
-      pytest -m task
+```sh
+pytest -m task
+```
 
 * comando que mostra o motivo de um teste marcado com skip ter sido pulado:
-
-      pytest -rs nome_do_arquivo.py
+```sh
+pytest -rs nome_do_arquivo.py
+```
 
 * comando para rodar com o ipd:
-
-      pytest -m task -s
+```sh
+pytest -m task -s
+```
 
 * comando para executar todos os testes deste arquivo:
-
-      pytest tests/test_tasks.py
+```sh
+pytest tests/test_tasks.py
+```
 
 * comando para executar todos os testes da pasta tests:
-
-      pytest
+```sh
+pytest
+```
 
 * comando para rodar os testes e parar com o pdb assim que dê o primeiro erro:
-
-      pytest --pdb
+```sh
+pytest --pdb
+```
 
 ### Tags embutidas do mark
 
@@ -91,7 +99,7 @@ def test_soma_mais_2(params, mensagem_esperada):
   assert soma_mais_2(params) == mensagem_esperada
 ```
 
-## Fixtures no Pytest
+### Fixtures no Pytest
 
 A fixture é basicamente uma maneira de 'entrar' em um contexto. Ou prover uma ferramenta que precisa
 ser executada 'antes' dos testes. Os testes são montados por 4 fases:
@@ -117,10 +125,14 @@ def test_output(capsys):
 4. mokeypatch: Adiciona atributos e métodos a objetos em runtime
 
 Para saber mais sobre as fixtures do pytest, basta rodar:
-
-    pytest --fixtures
+```sh
+pytest --fixtures
+```
 
 Exemplo de como criar a sua própria fixture:
+```python
+from pytest import fixture
+from app import create_app
 
 ```python
 from pytest import fixture
