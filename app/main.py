@@ -213,7 +213,7 @@ subrede = 26
 ip_rede_binario = '00001010.00010100.00001100.00101101'
 
 ip = '177.69.128.1'
-ip2 = '0'
+ip2 = '5'
 
-conversion = conversion_decimal_for_binario(ip2)
+conversion = conversion_decimal_for_binario(ip)
 print(conversion)

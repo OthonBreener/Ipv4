@@ -58,32 +58,38 @@ mandar nenhum teste para o banco de dados.
 
 * mark.skipif(): Para pular um teste em um determinado contexto, Exemplo:
 
-        import sys
-        @mark.skipif(
-          sys.platform == "win32",
-          reason = "Não funciona no windows"
-        )
-        def test_soma_2_linux():
-          numero_do_pinguim = 42
-          assert soma_mais_dois(numero_do_pinguim) == 42
+```python
+import sys
+@mark.skipif(
+  sys.platform == "win32",
+  reason = "Não funciona no windows"
+)
+def test_soma_2_linux():
+  numero_do_pinguim = 42
+  assert soma_mais_dois(numero_do_pinguim) == 42
+```
 
 * mark.xfail: É esperado que esse teste falhe em algum contexto. Exemplo:
 
-        @mark.xfail(python.version < 3)
-        def test_xfail_version_python():
-          assert brincadeira(20) != 'goiabada'
+```python
+@mark.xfail(python.version < 3)
+def test_xfail_version_python():
+  assert brincadeira(20) != 'goiabada'
+```
 
 * mark.usefixture(): ..
 
 * mark.parametrize(): Para parametrizar testes, ou seja, rodar o mesmo teste com diferentes
 parâmetros. A tupla recebe o params e o resultado esperado. Exemplo:
 
-        @mark.parametrize(
-          'params, mensagem_esperada',
-          [(1,3), (3,5), (5,7)]
-        )
-        def test_soma_mais_2(params, mensagem_esperada):
-          assert soma_mais_2(params) == mensagem_esperada
+```python
+@mark.parametrize(
+  'params, mensagem_esperada',
+  [(1,3), (3,5), (5,7)]
+)
+def test_soma_mais_2(params, mensagem_esperada):
+  assert soma_mais_2(params) == mensagem_esperada
+```
 
 ## Fixtures no Pytest
 
@@ -99,10 +105,12 @@ O pytest oferece fixtures prontas, algumas delas são:
 
 1. capsys e variações: 'espiona' o stdout
 
-      def test_output(capsys):
-          print('meu print')
-          captured = capsys.readouterr()
-          assert captured.out == 'meu print\n'
+```python
+def test_output(capsys):
+    print('meu print')
+    captured = capsys.readouterr()
+    assert captured.out == 'meu print\n'
+```
 
 2. tempdir: Cria um diretório temporário
 3. caplog: 'espiona' logs
@@ -114,15 +122,25 @@ Para saber mais sobre as fixtures do pytest, basta rodar:
 
 Exemplo de como criar a sua própria fixture:
 
-    from pytest import fixture
-    from app import create_app
+```python
+from pytest import fixture
+from app import create_app
 
-    @fixture
-    def flask_app():
-        return create_app()
+@fixture
+def flask_app():
+    return create_app()
 
-    def teste_com_app(flask_app):
-        pass
+def teste_com_app(flask_app):
+    pass
+```
+
+
+
+
+
+
+
+
 
 ### Bibliotecas instaladas:
 
