@@ -130,9 +130,6 @@ pytest --fixtures
 ```
 
 Exemplo de como criar a sua própria fixture:
-```python
-from pytest import fixture
-from app import create_app
 
 ```python
 from pytest import fixture
@@ -145,7 +142,6 @@ def flask_app():
 def teste_com_app(flask_app):
     pass
 ```
-
 
 ### Bibliotecas instaladas:
 

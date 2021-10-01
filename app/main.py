@@ -205,9 +205,6 @@ def primary_and_broadcast_ip(ip_rede_binario, ip_subrede_binario, subrede):
 
 
 
-
-
-
 ip_subrede_binario = '11111111.11111111.11111111.11000000'
 subrede = 26
 ip_rede_binario = '00001010.00010100.00001100.00101101'

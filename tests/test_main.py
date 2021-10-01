@@ -65,17 +65,57 @@ class TestFunctionConversionBinaroForDecimal:
 
         assert conversion_binario_for_decimal(params) == resultado_esperado
 
-    def test_se_o_ip_for_composto_por_dois_numeros_um_zero_e_um_one_deve_retornar_resultado_esperado(self):
-
-        params = '01'
-        resultado_esperado = '1'
+    @mark.parametrize(
+        'params, resultado_esperado',
+        [('01','1'), ('10','2')]
+    )
+    def test_se_o_ip_for_composto_por_dois_numeros_um_zero_e_um_one_deve_retornar_resultado_esperado(self, params, resultado_esperado):
 
         assert conversion_binario_for_decimal(params) == resultado_esperado
 
-    @mark.task
-    def test_se_o_ip_for_composto_por_dois_numeros_um_one_e_um_zero_deve_retornar_resultado_esperado(self):
+    @mark.parametrize(
+        'params, resultado_esperado',
+        [('010', '2'), ('100', '4'), ('001', '1')]
+    )
+    def test_se_o_ip_for_composto_por_tres_numeros_deve_retornar_resultado_esperado(self, params, resultado_esperado):
 
-        params = '10'
-        resultado_esperado = '2'
+        assert conversion_binario_for_decimal(params) == resultado_esperado
+
+    def test_se_o_ip_for_composto_por_quatro_numeros_deve_retornar_o_resultado_esperado(self):
+
+        assert conversion_binario_for_decimal('1000') == '8'
+
+    def test_se_o_ip_for_composto_por_cinco_numeros_deve_retornar_resultado_esperado(self):
+
+        assert conversion_binario_for_decimal('01010') == '10'
+
+    def test_se_o_ip_for_composto_por_seis_numeros_deve_retornar_resultado_esperado(self):
+
+        assert conversion_binario_for_decimal('111001') == '57'
+
+    def test_se_o_ip_for_composto_por_sete_numeros_deve_retornar_resultado_esperado(self):
+
+        assert conversion_binario_for_decimal('0110111') == '55'
+
+    def test_se_o_ip_for_composto_por_oito_numeros_deve_retornar_resultado_esperado(self):
+
+        assert conversion_binario_for_decimal('10110110') == '182'
+
+    def test_se_o_ip_for_composto_por_dois_blocos_de_numeros_deve_retornar_o_resultado_esperado(self):
+
+        params = '00001010.00010100'
+        resultado_esperado = '10.20'
+        assert conversion_binario_for_decimal(params) == resultado_esperado
+
+    def test_se_o_ip_for_composto_por_dois_blocos_de_numeros_deve_retornar_o_resultado_esperado(self):
+
+        params = '00001010.00010100.00001100'
+        resultado_esperado = '10.20.12'
+        assert conversion_binario_for_decimal(params) == resultado_esperado
+
+    def test_se_o_ip_estiver_completo_deve_retornar_o_resultado_esperado(self):
+
+        params = '00001010.00010100.00001100.00101101'
+        resultado_esperado = '10.20.12.45'
 
         assert conversion_binario_for_decimal(params) == resultado_esperado
